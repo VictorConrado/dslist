@@ -1,6 +1,7 @@
 package com.devsuperior.dslist.dto;
 
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projections.GameMinProjection;
 import jakarta.persistence.Column;
 
 public class GameMinDTO {
@@ -9,6 +10,7 @@ public class GameMinDTO {
     private Integer year;
     private String imgUrl;
     private String shortDescription;
+
 
     public GameMinDTO(){
 
@@ -20,6 +22,14 @@ public class GameMinDTO {
         year = entity.getYear();
         imgUrl = entity.getImgUrl();
         shortDescription = entity.getShortDescription();
+    }
+
+    public GameMinDTO(GameMinProjection projection) {
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
     }
 
     public Long getId() {
@@ -61,4 +71,6 @@ public class GameMinDTO {
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
+
+
 }
